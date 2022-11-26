@@ -37,4 +37,3 @@ class dependeciaPerson {
 }
 
 
-//Hola Monti uwu
