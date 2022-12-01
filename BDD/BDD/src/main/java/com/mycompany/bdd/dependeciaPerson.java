@@ -16,11 +16,16 @@ import javax.swing.JOptionPane;
 class dependeciaPerson {
     Connection conexion1 = null;
     
-        String conexion = "jdbc:sqlserver://ls1-bdd-1.database.windows.net:1433;" 
+        String conexion = "jdbc:sqlserver://127.0.0.1:1433;" 
+                          + "databaseName=AdventureWorks2019;"
+                          + "user=sa;"
+                          + "password=123;"
+                          + "loginTimeout=30";
+        /*String conexion = "jdbc:sqlserver://ls1-bdd-1.database.windows.net:1433;" 
                           + "databaseName=AW_Person;"
                           + "user=SA_BDD;"
                           + "password=Holacomoestas1;"
-                          + "loginTimeout=30";
+                          + "loginTimeout=30";*/
      
     public Connection establecerConexion1(){
         try {

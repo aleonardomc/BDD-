@@ -47,14 +47,13 @@ public class BDD {
             System.out.println("4. | Consulta D");
             System.out.println("5. | Consulta E");
             System.out.println("6. | Consulta F");
-            System.out.println("7. | Salir\n");
+            System.out.println("7. | Consulta G");
+            System.out.println("8. | Salir\n");
             
             System.out.print("Elija una de las opciones: ");
             opcion = datos.nextInt();
             
-            
             if (opcion == 1){
-                
                 try {
                     CallableStatement consultaA = conexion1.establecerConexion1().prepareCall("{CALL consultaA}");
                     ResultSet rConsultaA = consultaA.executeQuery();
@@ -81,27 +80,107 @@ public class BDD {
                 }
                
             }
-            else if (opcion == 2){
-                System.out.println("PROCEDIMIENTO B\n");
             
+            else if (opcion == 2){
+            try {
+                    CallableStatement consultaA = conexion1.establecerConexion1().prepareCall("{CALL consultaB}");
+                    ResultSet rConsultaA = consultaA.executeQuery();
+                    System.out.println("PROCEDIMIENTO B\n");
+                    System.out.println("Determinar el producto más solicitado para la región (atributo group de\n" +
+                                       "salesterritory) “Noth America” y en que territorio de la región tiene mayor\n" +
+                                       "demanda");   
+                    System.out.println("Producto              | Solicitudes | Región");
+                    System.out.println("--------------------- | ----------- | ------ ");
+                    
+                    while (rConsultaA.next()){
+                        System.out.print(rConsultaA.getString("Producto") + "  ");
+                        System.out.print(rConsultaA.getString("Solicitudes") + "          ");
+                        System.out.println(rConsultaA.getString("Region"));
+                    }
+                    System.out.println("\n\n");
+              
+                } 
+                catch (SQLException ex) {
+                    Logger.getLogger(BDD.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
+            
             else if (opcion == 3){
                 System.out.println("PROCEDIMIENTO C");
             
             }
-            else if (opcion == 4){
-                System.out.println("PROCEDIMIENTO D");
             
-            }
-            else if (opcion == 5){
-                System.out.println("PROCEDIMIENTO E");
+            else if (opcion == 4){
+                try {
+                    CallableStatement consultaA = conexion1.establecerConexion1().prepareCall("{CALL consultaD}");
+                    ResultSet rConsultaA = consultaA.executeQuery();
+                    System.out.println("PROCEDIMIENTO D\n");
+                    System.out.println("Determinar si hay clientes que realizan ordenes en territorios diferentes al que\n" +
+                                       "se encuentran"); 
+                 
+                    if (rConsultaA == null)
+                                System.out.println("No existen clientes que hayan realizado pedidos en territorios distintos");
+                    //System.out.println("Producto             | Solicitudes | Región");
+                    //System.out.println("-------------------- | ----------- | ----- ");
+                    while (rConsultaA.next()){
+                   //     System.out.print(rConsultaA.getString("Producto") + "  ");
+                    //    System.out.print(rConsultaA.getString("Solicitudes") + " ");
+                     //   System.out.println(rConsultaA.getString("Region"));
+                          
+                    }
+                    System.out.println("\n\n");
               
+                } 
+                catch (SQLException ex) {
+                    Logger.getLogger(BDD.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            
+            else if (opcion == 5){
+               
             }
             else if (opcion == 6){
                 System.out.println("PROCEDIMIENTO F");
             
             }
             else if (opcion == 7){
+             try {
+                    System.out.println("PROCEDIMIENTO G\n");
+                    System.out.println("Actualizar el correo electrónico de una cliente que se reciba como argumento\n" +
+                                       "en la instrucción de actualización.\n"); 
+                    Scanner nombreEntrada = new Scanner(System.in);
+                    Scanner apellidoEntrada = new Scanner(System.in);
+                    Scanner correoEntrada = new Scanner(System.in);
+                    
+                    System.out.print("Ingrese su nombre: ");
+                    String nombre = nombreEntrada.nextLine();
+                    System.out.print("Ingrese su apellido: ");
+                    String apellido = apellidoEntrada.nextLine();
+                    System.out.print("Ingrese su nuevo correo: ");
+                    String correo = correoEntrada.nextLine();
+                    
+                    CallableStatement consultaA = conexion1.establecerConexion1().prepareCall("{CALL consultaG(?,?,?)}");
+                    consultaA.setString(1, nombre);
+                    consultaA.setString(2, apellido);
+                    consultaA.setString(3, correo);
+                    
+                    ResultSet rConsultaA = consultaA.executeQuery();
+           
+                    JOptionPane.showMessageDialog(null, "Se actualizo el nuevo correo.");
+                    System.out.println("\n");
+                    if (rConsultaA.wasNull() == true)
+                        System.out.println("verdadero");
+                    else if (rConsultaA.wasNull() == false)
+                        System.out.println("verdadero");
+                    
+                    System.out.println("Cambios realizados."); 
+                } 
+                catch (SQLException ex) {
+                    Logger.getLogger(BDD.class.getName()).log(Level.SEVERE, null, ex);
+                    JOptionPane.showMessageDialog(null, "Se actualizo el nuevo correo.");
+                }
+            }
+            else {
                 break;
             }
         }
