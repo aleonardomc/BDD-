@@ -25,7 +25,7 @@ public class dependenciaProduction {
     public Connection establecerConexion2(){
         try {
             conexion1 = DriverManager.getConnection(conexion);
-            JOptionPane.showMessageDialog(null, "Conexion establecida con AW_Production");
+            //JOptionPane.showMessageDialog(null, "Conexion establecida con AW_Production");
             return conexion1;
         } 
         catch (SQLException ex) {

@@ -30,7 +30,7 @@ class dependeciaPerson {
     public Connection establecerConexion1(){
         try {
             conexion1 = DriverManager.getConnection(conexion);
-            JOptionPane.showMessageDialog(null, "Conexion establecida con AW_Person");
+            //JOptionPane.showMessageDialog(null, "Conexion establecida con AW_Person");
             return conexion1;
         } 
         catch (SQLException ex) {

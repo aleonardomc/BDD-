@@ -25,7 +25,7 @@ public class dependenciaSales {
     public Connection establecerConexion3(){
         try {
             conexion1 = DriverManager.getConnection(conexion);
-            JOptionPane.showMessageDialog(null, "Conexion establecida con AW_Sales");
+            //JOptionPane.showMessageDialog(null, "Conexion establecida con AW_Sales");
             return conexion1;
         } 
         catch (SQLException ex) {

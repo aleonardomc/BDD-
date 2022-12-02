@@ -28,6 +28,8 @@ public class BDD {
         dependenciaProduction conexion2 = new dependenciaProduction();
         dependenciaSales conexion3 = new dependenciaSales();
         
+        boolean verificacion = true;
+
         
         conexion1.establecerConexion1();
        // conexion2.establecerConexion2();
@@ -39,6 +41,7 @@ public class BDD {
         int opcion;
         while (true){
             
+            System.out.println("------------------------------------------------");
             System.out.println("MENU PARA SELECCIONAR LAS SIGUIENTES CONSULTAS\n");
             
             System.out.println("1. | Consulta A");
@@ -88,12 +91,12 @@ public class BDD {
                     System.out.println("PROCEDIMIENTO B\n");
                     System.out.println("Determinar el producto más solicitado para la región (atributo group de\n" +
                                        "salesterritory) “Noth America” y en que territorio de la región tiene mayor\n" +
-                                       "demanda");   
+                                       "demanda\n");   
                     System.out.println("Producto              | Solicitudes | Región");
                     System.out.println("--------------------- | ----------- | ------ ");
                     
                     while (rConsultaA.next()){
-                        System.out.print(rConsultaA.getString("Producto") + "  ");
+                        System.out.print(rConsultaA.getString("Producto") + "   ");
                         System.out.print(rConsultaA.getString("Solicitudes") + "          ");
                         System.out.println(rConsultaA.getString("Region"));
                     }
@@ -139,12 +142,14 @@ public class BDD {
             else if (opcion == 5){
                
             }
+            
             else if (opcion == 6){
                 System.out.println("PROCEDIMIENTO F");
             
             }
+            
             else if (opcion == 7){
-             try {
+                try{
                     System.out.println("PROCEDIMIENTO G\n");
                     System.out.println("Actualizar el correo electrónico de una cliente que se reciba como argumento\n" +
                                        "en la instrucción de actualización.\n"); 
@@ -165,24 +170,18 @@ public class BDD {
                     consultaA.setString(3, correo);
                     
                     ResultSet rConsultaA = consultaA.executeQuery();
-           
-                    JOptionPane.showMessageDialog(null, "Se actualizo el nuevo correo.");
-                    System.out.println("\n");
-                    if (rConsultaA.wasNull() == true)
-                        System.out.println("verdadero");
-                    else if (rConsultaA.wasNull() == false)
-                        System.out.println("verdadero");
                     
-                    System.out.println("Cambios realizados."); 
-                } 
-                catch (SQLException ex) {
-                    Logger.getLogger(BDD.class.getName()).log(Level.SEVERE, null, ex);
                     JOptionPane.showMessageDialog(null, "Se actualizo el nuevo correo.");
+                    System.out.println("\n\n");             
+                }   
+                catch (SQLException ex) {
+                    //Logger.getLogger(BDD.class.getName()).log(Level.SEVERE, null, ex);
+                    JOptionPane.showMessageDialog(null, "No actualizo el nuevo correo.\n"
+                                                           +  "Verifique los datos");
                 }
             }
-            else {
+            else 
                 break;
-            }
         }
     }
 }
