@@ -25,10 +25,10 @@ public class BDD {
     public static void main(String[] args) {
         
         dependeciaPerson conexion1 = new dependeciaPerson();
-        dependenciaProduction conexion2 = new dependenciaProduction();
-        dependenciaSales conexion3 = new dependenciaSales();
+        //dependenciaProduction conexion2 = new dependenciaProduction();
+        //dependenciaSales conexion3 = new dependenciaSales();
         
-        boolean verificacion = true;
+       // boolean verificacion = true;
 
         
         conexion1.establecerConexion1();
