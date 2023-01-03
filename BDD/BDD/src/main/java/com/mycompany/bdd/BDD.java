@@ -58,7 +58,6 @@ public class BDD {
             
             if (opcion == 1){
                 try {
-    
                     System.out.println("PROCEDIMIENTO A\n");
                     System.out.println("Determinar el total de las ventas de los productos con la categoría que se provea\n" +
                                        "de argumento de entrada en la consulta, para cada uno de los territorios\n" +

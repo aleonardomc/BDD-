@@ -14,12 +14,17 @@ import javax.swing.JOptionPane;
  * @author Usuario
  */
 class dependeciaPerson {
-    Connection conexion1 = null;
     
-        String conexion = "jdbc:sqlserver://127.0.0.1:1433;" 
+    Connection conexion1 = null;
+    String servidor = JOptionPane.showInputDialog("Ingrese el nombre de su servidor: ");
+    String user = JOptionPane.showInputDialog("Ingrese su usuario: ");
+    String password = JOptionPane.showInputDialog("Ingrese su contraseña: ");
+    
+    
+        String conexion = "jdbc:sqlserver://" + servidor + ":1433;" 
                           + "databaseName=AdventureWorks2019;"
-                          + "user=sa;"
-                          + "password=123;"
+                          + "user=" + user + ";"
+                          + "password=" + password + ";"
                           + "loginTimeout=30";
         /*String conexion = "jdbc:sqlserver://ls1-bdd-1.database.windows.net:1433;" 
                           + "databaseName=AW_Person;"
